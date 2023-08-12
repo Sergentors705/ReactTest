@@ -1,7 +1,12 @@
 .App {
-    width: 800px;   
+    width: 800px;
 }
 
 .title {
     text-align: center;
+}
+
+.spacer {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }

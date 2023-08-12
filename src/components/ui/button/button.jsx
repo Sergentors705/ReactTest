@@ -1,9 +1,9 @@
 import React from "react";
-import './style.css';
+import "./style.css";
 
-function Button({text}) {
+function Button({children, ...props}) {
     return <>
-        <button className="button">{text}</button>
+        <button {...props} className="button">{children}</button>
     </>
 }
 

@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import Button from "../ui/button/button";
 import "./style.css";
 
-function Post(props) {
+function Post(props, remove) {
     
     return (
       <div className="post">
       <div className="post__content">
-        <strong>{props.post.id}. {props.post.title}</strong>
+        <strong>{props.number}. {props.post.title}</strong>
         <div>{props.post.text}</div>
       </div>
       <div className="post__btns">
-        <button>Delete</button>
+        <Button onClick={() => props.remove(props.post)} >Delete</Button>
       </div>
     </div>
     )

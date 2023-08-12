@@ -1,9 +1,9 @@
 import React from "react";
-import './style.css';
+import "./style.css";
 
-function Input({ placeholder }) {
+function Input({...props}) {
     return <>
-        <input placeholder={placeholder}/>
+        <input {...props}/>
     </>
 }
 

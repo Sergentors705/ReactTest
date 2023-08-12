@@ -1,36 +1,66 @@
-import React, {useState} from "react";
+import React, {useMemo, useRef, useState} from "react";
 import PostList from "../post-list/post-list";
-import Input from "../ui/input/input";
 import "./style.css";
-import Button from "../ui/button/button";
+import PostForm from "../post-form/post-form";
+import PostFilter from "../post-filter/post-filter";
+import ModalWindow from "../ui/modal-window/modal-window";
 
 function App() {
   const [posts, setPosts] = useState([
     {
-      id:1, 
-      title: 'Fuck',
-      text: 'Таким образом начало повседневной работы по формированию позиции в значительной степени обуславливает создание дальнейших направлений развития. Разнообразный и богатый опыт реализация намеченных плановых заданий влечет за собой процесс внедрения и модернизации существенных финансовых и административных условий. Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности играет важную роль в формировании новых предложений. Разнообразный и богатый опыт новая модель организационной деятельности требуют от нас анализа новых предложений. Разнообразный и богатый опыт консультация с широким активом позволяет выполнять важные задания по разработке форм развития. Таким образом рамки и место обучения кадров требуют от нас анализа дальнейших направлений развития.'
+      id:1,
+      title: "Валенки",
+      text: "Ехал грека через реку."
     },
     {
-      id:2, 
-      title: 'Shit',
-      text: 'Равным образом сложившаяся структура организации играет важную роль в формировании существенных финансовых и административных условий. Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности играет важную роль в формировании модели развития. Таким образом постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание системы обучения кадров, соответствует насущным потребностям.'
+      id:2,
+      title: "Трихлоризоциануровая кислота",
+      text: "Ахалай махалай ляськи масяськи."
     },
     {
-      id:3, 
-      title: 'Motherfucker',
-      text: 'Не следует, однако забывать, что дальнейшее развитие различных форм деятельности способствует подготовки и реализации модели развития. Разнообразный и богатый опыт реализация намеченных плановых заданий требуют от нас анализа соответствующий условий активизации. Разнообразный и богатый опыт постоянный количественный рост и сфера нашей активности требуют от нас анализа модели развития. Равным образом реализация намеченных плановых заданий способствует подготовки и реализации дальнейших направлений развития.'
+      id:3,
+      title: "Джигурда",
+      text: "Труп бомжа."
     },
   ])
 
+  const [filter, setFilter] = useState({sort: "", query: ""});
+
+  const sortedPosts = useMemo(
+    () => {
+      if (filter.sort) {
+        return [...posts].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]));
+      }
+      return posts;
+    },
+    [filter.sort, posts]
+  );
+
+  const sortedAndSearchedPosts = useMemo(
+    () => {
+      return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query.toLowerCase()))
+    },
+    [filter.query, sortedPosts]
+  )
+
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost])
+  }
+
+  const removePost = (post) => {
+    setPosts(posts.filter(p => p.id !== post.id))
+  }
+
   return (
     <div className="App">
-      <form>
-        <Input placeholder='Post name'/>
-        <Input placeholder='Post description'/>
-        <Button text='Create post' />
-      </form>
-      <PostList posts={posts} title='Posts list 1'/>
+      <ModalWindow visible>
+        <PostForm create={createPost}/>
+      </ModalWindow>
+      <PostFilter
+        filter={filter}
+        setFilter={setFilter}
+      />
+      <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Posts list 1"/>
     </div>
   );
 }
