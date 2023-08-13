@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import Button from "../button/button";
 
 function ModalWindow({children, visible, setVisible}) {
 
@@ -9,8 +10,20 @@ function ModalWindow({children, visible, setVisible}) {
   }
 
   return (
-    <div className={rootclasses.join(" ")}>
-      <div className="modal__content">
+    <div
+      className={rootclasses.join(" ")}
+      onClick={() => setVisible(false)}
+    >
+      <div
+        className="modal__content"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Button
+          type="button"
+          onClick={() => setVisible(false)}
+        >
+          Close
+        </Button>
         {children}
       </div>
     </div>

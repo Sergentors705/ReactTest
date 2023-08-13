@@ -5,7 +5,7 @@ import "./style.css";
 
 function PostFilter({filter, setFilter}) {
   return (
-    <div>
+    <div className="post-filter">
       <Input
         type="text"
         value={filter.query}

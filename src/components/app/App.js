@@ -4,6 +4,7 @@ import "./style.css";
 import PostForm from "../post-form/post-form";
 import PostFilter from "../post-filter/post-filter";
 import ModalWindow from "../ui/modal-window/modal-window";
+import Button from "../ui/button/button";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -25,6 +26,7 @@ function App() {
   ])
 
   const [filter, setFilter] = useState({sort: "", query: ""});
+  const [modal, setModal] = useState(false);
 
   const sortedPosts = useMemo(
     () => {
@@ -44,16 +46,21 @@ function App() {
   )
 
   const createPost = (newPost) => {
-    setPosts([...posts, newPost])
+    setPosts([...posts, newPost]);
+    setModal(false);
   }
 
   const removePost = (post) => {
-    setPosts(posts.filter(p => p.id !== post.id))
+    setPosts(posts.filter(p => p.id !== post.id));
   }
 
   return (
     <div className="App">
-      <ModalWindow visible>
+      <Button
+        style={{marginBottom: "20px"}}
+        onClick={() => setModal(true)}
+      >Create post</Button>
+      <ModalWindow visible={modal} setVisible={setModal}>
         <PostForm create={createPost}/>
       </ModalWindow>
       <PostFilter

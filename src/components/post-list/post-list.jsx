@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Post from "../post/post";
 import "./style.css";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 function PostList({posts, title, remove}) {
 
@@ -13,8 +14,17 @@ function PostList({posts, title, remove}) {
   return (
     <>
       <h1 className="title">{title}</h1>
-      {posts.map((post, index) =>
-      <Post remove={remove} number={index + 1} post={post} key={post.id}/>)}
+      <TransitionGroup>
+        {posts.map((post, index) =>
+          <CSSTransition
+            key={post.id}
+            timeout={500}
+            classNames="post"
+          >
+            <Post remove={remove} number={index + 1} post={post}/>
+          </CSSTransition>
+        )}
+      </TransitionGroup>
     </>
   )
 }
