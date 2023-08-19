@@ -12,7 +12,7 @@ function PostList({posts, title, remove}) {
   }
 
   return (
-    <>
+    <div className="post-list">
       <h1 className="title">{title}</h1>
       <TransitionGroup>
         {posts.map((post, index) =>
@@ -25,7 +25,7 @@ function PostList({posts, title, remove}) {
           </CSSTransition>
         )}
       </TransitionGroup>
-    </>
+    </div>
   )
 }
 

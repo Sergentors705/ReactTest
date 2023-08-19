@@ -3,12 +3,12 @@ import Button from "../ui/button/button";
 import "./style.css";
 
 function Post(props, remove) {
-    
+
     return (
       <div className="post">
       <div className="post__content">
-        <strong>{props.number}. {props.post.title}</strong>
-        <div>{props.post.text}</div>
+        <h2 className="post__title">{props.post.id}. {props.post.title}</h2>
+        <div className="text">{props.post.body}</div>
       </div>
       <div className="post__btns">
         <Button onClick={() => props.remove(props.post)} >Delete</Button>
