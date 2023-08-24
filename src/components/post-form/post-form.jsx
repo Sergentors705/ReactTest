@@ -5,28 +5,28 @@ import "./style.css";
 
 function PostForm({create}) {
 
-    const [post, setPost] = useState({title: "", text: ""})
-  
+    const [post, setPost] = useState({title: "", body: ""})
+
     const addNewPost = (event) => {
       event.preventDefault();
         const newPost = {
             ...post, id: Date.now()
         }
         create(newPost)
-      setPost({title: "", text: ""});
+      setPost({title: "", body: ""});
     }
     return (
         <form>
         <Input
-          onChange={e => setPost({...post, title: e.target.value})} 
-          type="text" 
-          value={post.title} 
+          onChange={e => setPost({...post, title: e.target.value})}
+          type="text"
+          value={post.title}
           placeholder="Post name"
         />
         <Input
-          onChange={e => setPost({...post, text: e.target.value})} 
-          type="text" 
-          value={post.text} 
+          onChange={e => setPost({...post, body: e.target.value})}
+          type="text"
+          value={post.body}
           placeholder="Post description"
         />
         <Button  type="submit" onClick={addNewPost}>Create post</Button>

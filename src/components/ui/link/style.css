@@ -1,0 +1,31 @@
+.button:disabled {
+  background-color: gray;
+  border-color: black;
+  color: black;
+}
+
+.page-button__current {
+border-color: coral;
+color: coral;
+}
+
+.page-button:focus {
+outline: 2px solid aqua;
+}
+
+.page-button__current:active {
+  color: coral;
+  padding: 3px;
+  border: 4px solid coral;
+}
+
+.nav__button {
+border-color: yellow;
+color: yellow;
+}
+
+.nav__button:active {
+  padding: 3px;
+  border: 4px solid yellow;
+  color: yellow;
+}

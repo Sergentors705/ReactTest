@@ -1,13 +1,9 @@
 .App {
     width: 800px;
+    color: lime;
 }
 
 .title {
   color: aqua;
     text-align: center;
-}
-
-.spacer {
-    margin-top: 15px;
-    margin-bottom: 15px;
 }

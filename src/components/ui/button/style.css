@@ -1,24 +1,44 @@
 .button {
     padding: 5px;
-    border: 2px solid deeppink;
+    border: 2px solid white;
     background-color: rgb(47, 46, 44);
     border-radius: 4px;
     font-size: 16px;
     line-height: 20px;
     text-transform: uppercase;
-    color: deeppink;
+    color: white;
 }
 
 .button:active {
-    color: deeppink;
+    color: white;
     padding: 3px;
-    border: 4px solid deeppink;
+    border: 4px solid white;
 }
 
 .button:disabled {
     background-color: gray;
     border-color: black;
     color: black;
+}
+
+.delete-button {
+  border-color: deeppink;
+  color: deeppink;
+}
+
+.delete-button:active {
+    border: 4px solid deeppink;
+    color: deeppink;
+}
+
+.open-button {
+  border-color: lime;
+  color: lime;
+}
+
+.open-button:active {
+    border-color: lime;
+    color: lime;
 }
 
 .page-button__current {
@@ -32,6 +52,16 @@
 
 .page-button__current:active {
     color: coral;
+    border-color: coral;
+}
+
+.nav__button {
+  border-color: yellow;
+  color: yellow;
+}
+
+.nav__button:active {
     padding: 3px;
-    border: 4px solid coral;
+    border: 4px solid yellow;
+    color: yellow;
 }
